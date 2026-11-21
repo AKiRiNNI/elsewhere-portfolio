@@ -9,8 +9,6 @@ const portraitUrl = `${import.meta.env.BASE_URL}images/oc-id-photo.jpg`
         <span>CHAPTER 01 / ABOUT</span>
         <div class="about__portrait">
           <img :src="portraitUrl" alt="Ziyue Lin's original character portrait" />
-          <span>OC / ID PHOTO</span>
-          <small>ZIYUE // 00</small>
         </div>
         <h2 id="about-title">ZIYUE<br />LIN.</h2>
         <p>COMPUTER SCIENCE / AI SYSTEMS / GAME DEVELOPMENT</p>
