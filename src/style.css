@@ -237,10 +237,11 @@ footer { position: absolute; z-index: 4; left: 30px; right: 30px; bottom: 18px; 
 .project-open { min-width: 180px; padding: 15px 20px; border: 1px solid currentColor; background: #000; color: #fff; font: inherit; font-size: 12px; letter-spacing: .1em; cursor: pointer; }
 .project-entry--dark .project-open { background: #fff; color: #000; }
 .project-open:hover, .project-open:focus-visible { transform: translateY(-3px); }
-.case-study { position: fixed; z-index: 30; inset: 58px 0 0; overflow-y: auto; background: rgba(255,255,255,.94); color: #000; }
-.case-study__bar { position: sticky; z-index: 2; top: 0; display: flex; justify-content: space-between; align-items: center; padding: 14px clamp(20px, 4vw, 60px); background: #000; color: #fff; font-size: 11px; letter-spacing: .12em; }
+.case-study { position: fixed; z-index: 30; inset: 58px 0 0; overflow-y: auto; background: #fff; color: #000; isolation: isolate; }
+.case-study__noise { position: fixed; z-index: 0; inset: 58px 0 0; overflow: hidden; pointer-events: none; }
+.case-study__bar { position: sticky; z-index: 2; top: 0; display: flex; justify-content: space-between; align-items: center; min-width: 0; padding: 14px clamp(20px, 4vw, 60px); background: #000; color: #fff; font-size: 11px; letter-spacing: .12em; }
 .case-study__bar button { padding: 8px 14px; border: 1px solid currentColor; background: transparent; color: inherit; font: inherit; font-size: 11px; cursor: pointer; }
-.case-study__content { width: min(1200px, calc(100% - 44px)); margin: 0 auto; padding: clamp(46px, 7vw, 100px) 0 100px; }
+.case-study__content { position: relative; z-index: 1; width: min(1200px, calc(100% - 44px)); margin: 0 auto; padding: clamp(46px, 7vw, 100px) 0 100px; }
 .case-study__hero { display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 40px; align-items: end; padding-bottom: 38px; border-bottom: 2px solid #000; }
 .case-study__hero span, .case-study h3 { font-size: 11px; letter-spacing: .15em; }
 .case-study__hero h2 { max-width: 1000px; margin: 18px 0 0; font: 900 clamp(3rem, 7.5vw, 8rem)/.84 Arial, sans-serif; letter-spacing: -.07em; }

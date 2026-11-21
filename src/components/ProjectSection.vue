@@ -1,10 +1,12 @@
 <script setup>
 import { nextTick, onBeforeUnmount, onMounted, ref, watch } from 'vue'
+import OrganicNoiseBackground from './OrganicNoiseBackground.vue'
 import ScrambleText from './ScrambleText.vue'
 
 const letters = 'PROJECT'.split('')
 const selectedProject = ref(null)
 const closeButton = ref(null)
+const caseNoiseEnabled = ref(true)
 const projects = [
   { index: '001', category: 'COMPUTER VISION', title: 'JEWELRY SKU CLASSIFIER', date: 'SEP. 2026 — PRESENT', summary: 'An image-classification pipeline for recognizing handmade jewelry when barcode information is unavailable, built for visually difficult product conditions.', stack: ['Python', 'PyTorch', 'Computer Vision', '1-NN', 'Model Evaluation', 'Image Classification'], details: ['Designed a pipeline targeting both Top-1 and Top-3 SKU prediction performance.', 'Established a 1-NN baseline over pretrained visual features and a linear-classifier primary approach.', 'Structured evaluation around lighting, camera angle, reflections, and visually similar product classes.'], outcome: 'A robust evaluation-first approach that compares model behavior beyond aggregate accuracy.' },
   { index: '002', category: 'GAME DEVELOPMENT', title: 'AFTER HOURS: MUSEUM SHIFT', date: 'OCT. 2026 — PRESENT', summary: 'A first-person survival-horror prototype set inside a museum, combining randomized exhibit tasks with a responsive tablet interface and anomaly systems.', stack: ['Unreal Engine 5', 'Blueprints', 'Gameplay AI', 'UI / HUD', 'Git', 'Systems Design'], details: ['Built artifact interaction, task progression, tablet UI, flashlight controls, and player feedback systems.', 'Designed randomized non-repeating exhibit objectives with context-sensitive interface updates.', 'Integrated player, environment, and anomaly-AI systems across a four-person GitHub workflow.'], outcome: 'A unified playable Alpha focused on scalable systems and readable moment-to-moment feedback.' },
@@ -15,7 +17,10 @@ function openCaseStudy(project) { selectedProject.value = project; nextTick(() =
 function closeCaseStudy() { selectedProject.value = null }
 function handleKeydown(event) { if (event.key === 'Escape' && selectedProject.value) closeCaseStudy() }
 watch(selectedProject, (project) => { document.body.style.overflow = project ? 'hidden' : '' })
-onMounted(() => window.addEventListener('keydown', handleKeydown))
+onMounted(() => {
+  caseNoiseEnabled.value = !window.matchMedia('(prefers-reduced-motion: reduce)').matches
+  window.addEventListener('keydown', handleKeydown)
+})
 onBeforeUnmount(() => { window.removeEventListener('keydown', handleKeydown); document.body.style.overflow = '' })
 </script>
 
@@ -41,6 +46,7 @@ onBeforeUnmount(() => { window.removeEventListener('keydown', handleKeydown); do
     </div>
     <Teleport to="body">
       <section v-if="selectedProject" class="case-study" role="dialog" aria-modal="true" :aria-labelledby="`case-study-${selectedProject.index}`">
+        <div class="case-study__noise" aria-hidden="true"><OrganicNoiseBackground :enabled="caseNoiseEnabled" visible :show-whispers="false" /></div>
         <header class="case-study__bar"><span>ELSEWHERE / CASE STUDY {{ selectedProject.index }}</span><button ref="closeButton" type="button" @click="closeCaseStudy">CLOSE</button></header>
         <div class="case-study__content">
           <div class="case-study__hero"><div><span>{{ selectedProject.category }}</span><h2 :id="`case-study-${selectedProject.index}`">{{ selectedProject.title }}</h2></div><time>{{ selectedProject.date }}</time></div>
