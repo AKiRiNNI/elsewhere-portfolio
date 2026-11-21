@@ -2,6 +2,7 @@
 import { nextTick, onBeforeUnmount, onMounted, ref, watch } from 'vue'
 import OrganicNoiseBackground from './OrganicNoiseBackground.vue'
 import ScrambleText from './ScrambleText.vue'
+import SectionNoise from './SectionNoise.vue'
 
 const letters = 'PROJECT'.split('')
 const selectedProject = ref(null)
@@ -26,6 +27,7 @@ onBeforeUnmount(() => { window.removeEventListener('keydown', handleKeydown); do
 
 <template>
   <section id="projects" class="projects" aria-labelledby="projects-title">
+    <SectionNoise />
     <h2 id="projects-title" class="sr-only">Projects</h2>
     <div class="project-word" aria-label="PROJECT">
       <span v-for="(letter, index) in letters" :key="`${letter}-${index}`" class="project-letter"><span class="project-letter__hanger"><ScrambleText :text="letter" tag="span" class="project-letter__glyph" :duration="500 + index * 28" repeat /></span></span>

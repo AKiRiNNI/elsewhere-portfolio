@@ -7,6 +7,7 @@ const props = defineProps({
   visible: { type: Boolean, default: true },
   boosted: { type: Boolean, default: false },
   showWhispers: { type: Boolean, default: true },
+  light: { type: Boolean, default: false },
 })
 
 const canvas = ref(null)
@@ -46,6 +47,7 @@ const fragmentSource = `
   uniform float uBaseOpacity;
   uniform float uRadius;
   uniform float uBoost;
+  uniform float uTone;
 
   vec2 hash22(vec2 p) {
     p = vec2(dot(p, vec2(127.1, 311.7)), dot(p, vec2(269.5, 183.3)));
@@ -95,7 +97,7 @@ const fragmentSource = `
     float alpha = organic * uBaseOpacity;
     alpha += (organic * 0.72 + sharpBand) * uOpacity * reveal;
     alpha = min(alpha + uBoost * organic * 0.085, 0.34);
-    gl_FragColor = vec4(vec3(0.0), alpha);
+    gl_FragColor = vec4(vec3(uTone), alpha);
   }
 `
 
@@ -179,6 +181,7 @@ function render(now) {
   gl.uniform1f(uniforms.baseOpacity, ORGANIC_NOISE_CONFIG.baseOpacity)
   gl.uniform1f(uniforms.radius, ORGANIC_NOISE_CONFIG.revealRadius)
   gl.uniform1f(uniforms.boost, props.boosted ? 1 : 0)
+  gl.uniform1f(uniforms.tone, props.light ? 1 : 0)
   gl.drawArrays(gl.TRIANGLES, 0, 3)
   frame = requestAnimationFrame(render)
 }
@@ -228,6 +231,7 @@ onMounted(() => {
     baseOpacity: gl.getUniformLocation(program, 'uBaseOpacity'),
     radius: gl.getUniformLocation(program, 'uRadius'),
     boost: gl.getUniformLocation(program, 'uBoost'),
+    tone: gl.getUniformLocation(program, 'uTone'),
   }
   gl.clearColor(0, 0, 0, 0)
   gl.enable(gl.BLEND)

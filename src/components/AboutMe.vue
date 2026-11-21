@@ -1,9 +1,12 @@
 <script setup>
+import SectionNoise from './SectionNoise.vue'
+
 const portraitUrl = `${import.meta.env.BASE_URL}images/oc-id-photo.jpg`
 </script>
 
 <template>
   <section id="about" class="about" aria-labelledby="about-title">
+    <SectionNoise light />
     <div class="about__layout">
       <header class="about__intro">
         <span>CHAPTER 01 / ABOUT</span>
