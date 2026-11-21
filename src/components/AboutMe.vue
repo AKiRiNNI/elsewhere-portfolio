@@ -1,12 +1,16 @@
+<script setup>
+const portraitUrl = `${import.meta.env.BASE_URL}images/oc-id-photo.jpg`
+</script>
+
 <template>
   <section id="about" class="about" aria-labelledby="about-title">
     <div class="about__layout">
       <header class="about__intro">
         <span>CHAPTER 01 / ABOUT</span>
-        <div class="about__portrait" role="img" aria-label="Placeholder for Ziyue Lin's OC portrait">
+        <div class="about__portrait">
+          <img :src="portraitUrl" alt="Ziyue Lin's original character portrait" />
           <span>OC / ID PHOTO</span>
-          <i aria-hidden="true"></i>
-          <small>PORTRAIT PENDING</small>
+          <small>ZIYUE // 00</small>
         </div>
         <h2 id="about-title">ZIYUE<br />LIN.</h2>
         <p>COMPUTER SCIENCE / AI SYSTEMS / GAME DEVELOPMENT</p>
