@@ -53,7 +53,8 @@ onMounted(() => {
       detector.reset()
     }
   }, { threshold: [0.45] })
-  observer.observe(scope.value)
+  const home = document.querySelector('#home')
+  if (home) observer.observe(home)
 
   if (!reducedMotion.value) window.addEventListener('pointermove', onPointerMove, { passive: true })
 })
@@ -67,7 +68,7 @@ onBeforeUnmount(() => {
 
 <template>
   <div ref="scope" class="home-signal-scope">
-    <OrganicNoiseBackground :enabled="enabled && !reducedMotion" :visible="homeVisible" :boosted="active" />
+    <OrganicNoiseBackground :enabled="enabled && !reducedMotion" visible :boosted="active" :show-whispers="homeVisible" />
     <div class="crt-interference" :class="{ 'is-active': active }" aria-hidden="true">
       <div class="crt-static"></div>
       <div class="crt-scanlines"></div>

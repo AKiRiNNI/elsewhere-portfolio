@@ -6,6 +6,7 @@ const props = defineProps({
   enabled: { type: Boolean, default: true },
   visible: { type: Boolean, default: true },
   boosted: { type: Boolean, default: false },
+  showWhispers: { type: Boolean, default: true },
 })
 
 const canvas = ref(null)
@@ -135,7 +136,7 @@ function onPointerMove(event) {
   velocityTarget = Math.min(velocity * ORGANIC_NOISE_CONFIG.velocitySensitivity, 1)
   pointer.x = Math.min(Math.max((event.clientX - bounds.left) / bounds.width, 0), 1)
   pointer.y = 1 - Math.min(Math.max((event.clientY - bounds.top) / bounds.height, 0), 1)
-  const whisperItems = whisperLayer.value?.children || []
+  const whisperItems = props.showWhispers ? (whisperLayer.value?.children || []) : []
   Array.from(whisperItems).forEach((item, index) => {
     const itemBounds = item.getBoundingClientRect()
     const centerX = itemBounds.left + itemBounds.width * 0.5
@@ -156,7 +157,7 @@ function render(now) {
   const delta = Math.min(now - (lastPointerTime || now), ORGANIC_NOISE_CONFIG.fadeOutDuration)
   if (delta > 34) velocityTarget *= Math.max(0, 1 - delta / ORGANIC_NOISE_CONFIG.fadeOutDuration)
   velocitySmoothed += (velocityTarget - velocitySmoothed) * 0.09
-  const whisperItems = whisperLayer.value?.children || []
+  const whisperItems = props.showWhispers ? (whisperLayer.value?.children || []) : []
   Array.from(whisperItems).forEach((item, index) => {
     const whisperTarget = (whisperProximity[index] ?? 0) * Math.min(0.55, velocitySmoothed * 0.7)
     whisperOpacity[index] = (whisperOpacity[index] ?? 0) + (whisperTarget - (whisperOpacity[index] ?? 0)) * 0.1
@@ -255,7 +256,7 @@ onBeforeUnmount(() => {
 
 <template>
   <canvas ref="canvas" class="organic-noise-canvas" aria-hidden="true"></canvas>
-  <div ref="whisperLayer" class="noise-whispers" aria-hidden="true">
+  <div v-show="showWhispers" ref="whisperLayer" class="noise-whispers" aria-hidden="true">
     <span class="noise-whisper noise-whisper--name">ZIYUE LIN</span>
     <span class="noise-whisper noise-whisper--portfolio">PORTFOLIO</span>
     <span class="noise-whisper noise-whisper--scroll">SCROLL</span>

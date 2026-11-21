@@ -269,8 +269,8 @@ onBeforeUnmount(() => {
   <main ref="root" class="experience">
     <audio ref="soundtrack" :src="`${publicBase}audio/brainrot-feat-kasane-teto.mp3`" preload="auto" loop></audio>
     <SiteNav />
+    <HomeSignalEffects />
     <section id="home" class="home" aria-label="Portfolio preview">
-      <HomeSignalEffects />
       <span class="spark spark-one float-fast" aria-hidden="true">✦</span>
       <span class="spark spark-two float-slow" aria-hidden="true">✧</span>
       <div class="orb float-slow" aria-hidden="true"></div>
