@@ -10,7 +10,7 @@ const portraitUrl = `${import.meta.env.BASE_URL}images/oc-id-photo.jpg`
         <div class="about__portrait">
           <img :src="portraitUrl" alt="Ziyue Lin's original character portrait" />
         </div>
-        <h2 id="about-title">ZIYUE<br />LIN.</h2>
+        <h2 id="about-title" class="about__name">ZIYUE LIN</h2>
         <p>COMPUTER SCIENCE / AI SYSTEMS / GAME DEVELOPMENT</p>
         <nav class="about__links" aria-label="Contact links">
           <a href="mailto:Ziyue8@illinois.edu">EMAIL</a>
@@ -24,7 +24,7 @@ const portraitUrl = `${import.meta.env.BASE_URL}images/oc-id-photo.jpg`
         <article class="about-card">
           <span>01 / EDUCATION</span>
           <div>
-            <h3>UIUC<br />CHAMPAIGN.</h3>
+            <h3 class="about-card__school">UNIVERSITY OF ILLINOIS<br />AT URBANA-CHAMPAIGN</h3>
             <div class="about-card__education">
               <section>
                 <strong>MASTER OF COMPUTER SCIENCE</strong>
@@ -36,7 +36,7 @@ const portraitUrl = `${import.meta.env.BASE_URL}images/oc-id-photo.jpg`
               </section>
             </div>
           </div>
-          <small>UNIVERSITY OF ILLINOIS URBANA-CHAMPAIGN</small>
+          <small>CHAMPAIGN, ILLINOIS</small>
         </article>
 
         <article class="about-card about-card--dark">

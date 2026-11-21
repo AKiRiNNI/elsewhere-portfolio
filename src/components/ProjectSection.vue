@@ -28,29 +28,29 @@ const letters = 'PROJECT'.split('')
 
     <div class="project-browser" tabindex="0" aria-label="Scrollable project experience">
       <header>
-        <span>SELECTED WORK / PLACEHOLDERS</span>
-        <span>SCROLL INSIDE ↓</span>
+        <span>SELECTED WORK / 2026</span>
+        <span>03 PROJECTS</span>
       </header>
 
       <article class="project-entry">
-        <span>001 / INTERACTIVE</span>
-        <ScrambleText text="PROJECT TITLE\nGOES HERE." repeat />
-        <p>Short project description placeholder. Add the idea, your role, and what made the work interesting.</p>
-        <small>YEAR — ROLE — MEDIUM</small>
+        <span>001 / COMPUTER VISION</span>
+        <ScrambleText text="JEWELRY SKU\nCLASSIFIER." repeat />
+        <p>An image-classification pipeline for recognizing handmade jewelry from product photos when barcode information is unavailable, evaluated across lighting, reflections, camera angles, and visually similar products.</p>
+        <small>2026 — PYTHON / PYTORCH / COMPUTER VISION</small>
       </article>
 
       <article class="project-entry project-entry--dark">
-        <span>002 / VISUAL STORY</span>
-        <ScrambleText text="ANOTHER\nSTRANGE WORLD." :duration="720" repeat />
-        <p>A second placeholder for a visual experiment, motion piece, illustration series, or personal story.</p>
-        <small>YEAR — ROLE — MEDIUM</small>
+        <span>002 / GAME DEVELOPMENT</span>
+        <ScrambleText text="AFTER HOURS:\nMUSEUM SHIFT." :duration="720" repeat />
+        <p>A first-person survival-horror prototype set inside a multi-room museum, featuring randomized exhibit tasks, interaction systems, tablet UI, flashlight controls, and anomaly-driven gameplay.</p>
+        <small>2026 — UNREAL ENGINE 5 / BLUEPRINTS / GAMEPLAY AI</small>
       </article>
 
       <article class="project-entry">
-        <span>003 / ARCHIVE</span>
-        <ScrambleText text="ONE MORE\nFOR THE LOG." :duration="580" repeat />
-        <p>Keep scrolling inside this window without leaving the Project chapter.</p>
-        <small>REPLACE WITH REAL WORK ↗</small>
+        <span>003 / AI SYSTEMS</span>
+        <ScrambleText text="AI SUPPORT\nOPERATIONS AGENT." :duration="580" repeat />
+        <p>An evaluated LLM workflow coordinating knowledge search, booking lookup, and human escalation through structured function calling, tested against a 60-case benchmark.</p>
+        <small>2026 — PYTHON / OPENAI API / FUNCTION CALLING / PYTEST</small>
       </article>
     </div>
   </section>
